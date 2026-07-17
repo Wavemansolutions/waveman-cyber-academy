@@ -7,7 +7,7 @@
 <g stroke="#ff8fd0" opacity=".1"><path d="M0 120H1280M0 240H1280M0 360H1280M0 480H1280M0 600H1280"/><path d="M120 0V720M300 0V720M480 0V720M660 0V720M840 0V720M1020 0V720M1200 0V720"/></g>
 <rect x="85" y="80" width="1110" height="560" rx="38" fill="#07111f" fill-opacity=".82" stroke="#fff" stroke-opacity=".12"/>
 <text x="140" y="205" fill="#ff8fd0" font-family="Arial" font-size="29" font-weight="700" letter-spacing="7">ARTIFICIAL INTELLIGENCE</text>
-<text x="140" y="325" fill="#f5f7fb" font-family="Arial" font-size="68" font-weight="800">AI & AUTOMATION</text>
+<text x="140" y="325" fill="#f5f7fb" font-family="Arial" font-size="68" font-weight="800">AI &amp; AUTOMATION</text>
 <text x="143" y="392" fill="#a8b2c7" font-family="Arial" font-size="29">Practical Artificial Intelligence Course</text>
 <circle cx="1035" cy="510" r="68" fill="#ff8fd0"/><path d="M1017 477L1068 510L1017 543Z" fill="#04120b"/>
 <text x="143" y="550" fill="#ff8fd0" font-family="Arial" font-size="21" font-weight="700" letter-spacing="3">WATCH COURSE INTRODUCTION</text>
