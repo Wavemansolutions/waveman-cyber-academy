@@ -1,49 +1,49 @@
-# Cyber Skills Academy Landing Page
+# Cyber Skills Academy — Google Drive Video Version
 
-## Included
-- Responsive one-page design
-- Four course sections
-- One intro video per course
-- Academy overview video
-- Buy buttons connected from one JavaScript settings object
-- Mobile menu, animations, FAQ and contact section
-- Custom SVG video posters
+This version shows a visible play button on every course card and loads each intro video from Google Drive directly inside the landing page.
 
-## Add your Selar links
-Open `script.js` and replace the four placeholder URLs in `COURSE_LINKS`.
+## Add Google Drive videos
 
-Normal link:
-`https://selar.com/your-product-code`
+1. Upload each MP4 video to Google Drive.
+2. Right-click the video and choose **Share**.
+3. Under General access, choose **Anyone with the link** and **Viewer**.
+4. Copy the link.
+5. Open `script.js` and replace the five values inside `DRIVE_VIDEOS`.
 
-Optional direct-checkout format:
-`https://selar.com/your-product-code?add_to_cart=1&email=&fullname=&mobile=`
+Example:
 
-Test each link before publishing.
+```js
+const DRIVE_VIDEOS = {
+  overview: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
+  ceh: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
+  soc: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
+  noc: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
+  ai: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
+};
+```
 
-## Add your videos
-Place these MP4 files in `assets/videos/`:
-- `academy-overview.mp4`
-- `ceh-intro.mp4`
-- `soc-intro.mp4`
-- `noc-intro.mp4`
-- `ai-intro.mp4`
+The script extracts the file ID and loads:
 
-## Update your details
-In `index.html`, replace:
-- `hello@example.com`
-- `2348000000000`
-- Course descriptions, policies and branding where needed
+```text
+https://drive.google.com/file/d/FILE_ID/preview
+```
 
-## Open locally
-Open `index.html` in a browser. For easier editing, use VS Code with Live Server.
+## Add Selar links
 
-## Publish
-The page is static and can be hosted on Vercel, Netlify, GitHub Pages, Cloudflare Pages or a normal web server.
+In the same `script.js` file, replace the four placeholders inside `COURSE_LINKS`.
 
-## CEH wording
-EC-Council currently markets CEH v13 Powered by AI. Do not describe the course as official EC-Council training or promise an EC-Council certificate unless you have authorization.
+## Upload changes to GitHub
 
+```bash
+git add .
+git commit -m "Add Google Drive course videos"
+git push
+```
 
-## Vercel deployment note
+Vercel will redeploy automatically after the push.
 
-Upload the contents of this folder so `index.html`, `styles.css`, `script.js`, `vercel.json`, and `assets/` are all at the repository root. Do not upload only the ZIP file.
+## Notes
+
+- Do not upload the MP4 files to GitHub; Google Drive hosts them.
+- Google Drive must be set to **Anyone with the link → Viewer** or visitors will see an access request.
+- For high-traffic paid courses, a dedicated video platform is usually more reliable than Google Drive.

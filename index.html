@@ -43,9 +43,10 @@
     </div>
     <div class="screen reveal" id="overview">
       <div class="screen-top"><i></i><i></i><i></i><span>academy-overview</span></div>
-      <video controls preload="metadata" poster="assets/images/academy.svg">
-        <source src="assets/videos/academy-overview.mp4" type="video/mp4">
-      </video>
+      <div class="drive-video" data-video="overview" data-poster="assets/images/academy.svg" aria-label="Academy overview video">
+        <img src="assets/images/academy.svg" alt="Academy overview video poster">
+        <button class="video-play" type="button" aria-label="Play academy overview video"><span>▶</span><b>Play introduction</b></button>
+      </div>
       <div class="terminal">
         <p><span>$</span> choose_learning_path</p>
         <p>✓ Ethical Hacking</p><p>✓ SOC Analysis</p><p>✓ Network Operations</p><p>✓ AI & Automation</p>
@@ -67,7 +68,7 @@
     </div>
     <div class="courses">
       <article class="card reveal">
-        <div class="media"><video controls preload="metadata" poster="assets/images/ceh.svg"><source src="assets/videos/ceh-intro.mp4" type="video/mp4"></video><span>Cybersecurity</span></div>
+        <div class="media"><div class="drive-video" data-video="ceh" data-poster="assets/images/ceh.svg"><img src="assets/images/ceh.svg" alt="CEH ethical hacking course introduction"><button class="video-play" type="button" aria-label="Play CEH introduction video"><span>▶</span><b>Watch intro</b></button></div><span>Cybersecurity</span></div>
         <div class="content">
           <div class="icon">⌁</div><h3>CEH v13 Ethical Hacking</h3>
           <p>Learn ethical hacking foundations, reconnaissance, vulnerability assessment and responsible security testing.</p>
@@ -77,7 +78,7 @@
       </article>
 
       <article class="card reveal">
-        <div class="media"><video controls preload="metadata" poster="assets/images/soc.svg"><source src="assets/videos/soc-intro.mp4" type="video/mp4"></video><span>Blue Team</span></div>
+        <div class="media"><div class="drive-video" data-video="soc" data-poster="assets/images/soc.svg"><img src="assets/images/soc.svg" alt="SOC analyst course introduction"><button class="video-play" type="button" aria-label="Play SOC introduction video"><span>▶</span><b>Watch intro</b></button></div><span>Blue Team</span></div>
         <div class="content">
           <div class="icon">◉</div><h3>SOC Analyst Training</h3>
           <p>Understand how security operations teams monitor threats, investigate alerts and respond to incidents.</p>
@@ -87,7 +88,7 @@
       </article>
 
       <article class="card reveal">
-        <div class="media"><video controls preload="metadata" poster="assets/images/noc.svg"><source src="assets/videos/noc-intro.mp4" type="video/mp4"></video><span>Networking</span></div>
+        <div class="media"><div class="drive-video" data-video="noc" data-poster="assets/images/noc.svg"><img src="assets/images/noc.svg" alt="NOC engineer course introduction"><button class="video-play" type="button" aria-label="Play NOC introduction video"><span>▶</span><b>Watch intro</b></button></div><span>Networking</span></div>
         <div class="content">
           <div class="icon">⌘</div><h3>NOC Engineer Training</h3>
           <p>Learn how NOC teams monitor infrastructure, troubleshoot outages and keep services reliable.</p>
@@ -97,7 +98,7 @@
       </article>
 
       <article class="card reveal">
-        <div class="media"><video controls preload="metadata" poster="assets/images/ai.svg"><source src="assets/videos/ai-intro.mp4" type="video/mp4"></video><span>Artificial Intelligence</span></div>
+        <div class="media"><div class="drive-video" data-video="ai" data-poster="assets/images/ai.svg"><img src="assets/images/ai.svg" alt="Practical AI and automation course introduction"><button class="video-play" type="button" aria-label="Play AI introduction video"><span>▶</span><b>Watch intro</b></button></div><span>Artificial Intelligence</span></div>
         <div class="content">
           <div class="icon">✦</div><h3>Practical AI & Automation</h3>
           <p>Use modern AI tools to improve productivity, automate tasks and build useful digital solutions.</p>

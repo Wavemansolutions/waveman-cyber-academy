@@ -1,6 +1,6 @@
-// Replace these placeholders with your actual Selar course links.
-// For direct checkout, Selar supports:
-// https://selar.com/product-code?add_to_cart=1&email=&fullname=&mobile=
+// ============================================================
+// 1) REPLACE THESE WITH YOUR REAL SELAR COURSE LINKS
+// ============================================================
 const COURSE_LINKS = {
   ceh: "https://selar.com/REPLACE-WITH-CEH-LINK",
   soc: "https://selar.com/REPLACE-WITH-SOC-LINK",
@@ -8,13 +8,103 @@ const COURSE_LINKS = {
   ai:  "https://selar.com/REPLACE-WITH-AI-LINK"
 };
 
+// ============================================================
+// 2) REPLACE THESE WITH GOOGLE DRIVE VIDEO SHARE LINKS OR FILE IDs
+//
+// Accepted examples:
+// https://drive.google.com/file/d/1AbCdEfGhIjKlMnOp/view?usp=sharing
+// 1AbCdEfGhIjKlMnOp
+//
+// In Google Drive, set each video to: Anyone with the link → Viewer.
+// ============================================================
+const DRIVE_VIDEOS = {
+  overview: "REPLACE-WITH-OVERVIEW-GOOGLE-DRIVE-LINK",
+  ceh: "REPLACE-WITH-CEH-GOOGLE-DRIVE-LINK",
+  soc: "REPLACE-WITH-SOC-GOOGLE-DRIVE-LINK",
+  noc: "REPLACE-WITH-NOC-GOOGLE-DRIVE-LINK",
+  ai: "REPLACE-WITH-AI-GOOGLE-DRIVE-LINK"
+};
+
 const toast = document.querySelector(".toast");
 function notify(message) {
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(notify.timer);
-  notify.timer = setTimeout(() => toast.classList.remove("show"), 3200);
+  notify.timer = setTimeout(() => toast.classList.remove("show"), 3600);
 }
+
+function getDriveFileId(value) {
+  if (!value || value.includes("REPLACE-WITH")) return "";
+  const trimmed = value.trim();
+
+  // A raw Drive file ID.
+  if (/^[a-zA-Z0-9_-]{15,}$/.test(trimmed)) return trimmed;
+
+  // Common Google Drive sharing URL formats.
+  const patterns = [
+    /\/file\/d\/([a-zA-Z0-9_-]+)/,
+    /[?&]id=([a-zA-Z0-9_-]+)/,
+    /\/d\/([a-zA-Z0-9_-]+)/
+  ];
+
+  for (const pattern of patterns) {
+    const match = trimmed.match(pattern);
+    if (match) return match[1];
+  }
+  return "";
+}
+
+function stopOtherDriveVideos(current) {
+  document.querySelectorAll(".drive-video.is-playing").forEach(container => {
+    if (container === current) return;
+    const poster = container.dataset.poster;
+    const alt = container.querySelector("iframe")?.title || "Course introduction video";
+    container.classList.remove("is-playing");
+    container.innerHTML = `
+      <img src="${poster}" alt="${alt}">
+      <button class="video-play" type="button" aria-label="Play introduction video">
+        <span>▶</span><b>Watch intro</b>
+      </button>`;
+  });
+}
+
+function loadDriveVideo(container) {
+  const key = container.dataset.video;
+  const fileId = getDriveFileId(DRIVE_VIDEOS[key]);
+
+  if (!fileId) {
+    container.classList.add("video-missing");
+    notify(`Add the ${key.toUpperCase()} Google Drive video link inside script.js.`);
+    return;
+  }
+
+  stopOtherDriveVideos(container);
+  container.classList.remove("video-missing");
+  container.classList.add("is-playing");
+
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+  iframe.title = `${key.toUpperCase()} course introduction video`;
+  iframe.allow = "autoplay; fullscreen";
+  iframe.allowFullscreen = true;
+  iframe.loading = "eager";
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+  container.replaceChildren(iframe);
+}
+
+// Event delegation keeps the play buttons working when posters are rebuilt.
+document.addEventListener("click", event => {
+  const playButton = event.target.closest(".video-play");
+  if (!playButton) return;
+  const container = playButton.closest(".drive-video");
+  if (container) loadDriveVideo(container);
+});
+
+document.querySelectorAll(".drive-video").forEach(container => {
+  const key = container.dataset.video;
+  if (!getDriveFileId(DRIVE_VIDEOS[key])) container.classList.add("video-missing");
+});
 
 document.querySelectorAll("[data-course]").forEach(button => {
   const key = button.dataset.course;
@@ -37,7 +127,7 @@ const nav = document.querySelector(".nav nav");
 menu.addEventListener("click", () => {
   const open = nav.classList.toggle("open");
   document.body.classList.toggle("menu-open", open);
-  menu.setAttribute("aria-expanded", open);
+  menu.setAttribute("aria-expanded", String(open));
   menu.textContent = open ? "✕" : "☰";
 });
 nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
@@ -57,15 +147,7 @@ const observer = new IntersectionObserver(entries => {
       observer.unobserve(entry.target);
     }
   });
-}, {threshold: .12});
+}, { threshold: .12 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-document.querySelectorAll("video").forEach(video => {
-  video.addEventListener("play", () => {
-    document.querySelectorAll("video").forEach(other => {
-      if (other !== video) other.pause();
-    });
-  });
-});
 
 document.querySelector("#year").textContent = new Date().getFullYear();
