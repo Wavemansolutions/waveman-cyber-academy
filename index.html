@@ -43,9 +43,11 @@
     </div>
     <div class="screen reveal" id="overview">
       <div class="screen-top"><i></i><i></i><i></i><span>academy-overview</span></div>
-      <div class="drive-video" data-video="overview" data-poster="assets/images/academy.svg" aria-label="Academy overview video">
-        <img src="assets/images/academy.svg" alt="Academy overview video poster">
-        <button class="video-play" type="button" aria-label="Play academy overview video"><span>▶</span><b>Play introduction</b></button>
+      <div class="hero-local-video">
+        <video autoplay muted loop playsinline controls preload="auto" poster="assets/images/academy.svg" aria-label="CEH v13 course introduction video">
+          <source src="assets/videos/ceh-intro.MP4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div class="terminal">
         <p><span>$</span> choose_learning_path</p>

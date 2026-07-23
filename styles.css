@@ -115,6 +115,12 @@ h1 em {
 .screen-top i:nth-child(3) { background: #67e488; }
 .screen-top span { margin-left: auto; color: #7d899e; font: 12px monospace; }
 .screen video { aspect-ratio: 16/9; object-fit: cover; background: #02050b; }
+.hero-local-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #02050b;
+}
 .local-video video { aspect-ratio: 16/9; object-fit: cover; background: #02050b; }
 .terminal { padding: 19px 23px 23px; font: 13px monospace; }
 .terminal p { margin: 5px; color: var(--green); }

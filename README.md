@@ -20,3 +20,9 @@ git push
 
 - The CEH video file is large (~48 MB). GitHub supports files under 100 MB, so pushing from VS Code should work.
 - The other three courses are currently marked Coming Soon. Later, you can replace those sections with real links and videos.
+
+- The CEH intro video is also displayed in the hero section.
+
+## Hero video autoplay
+
+The hero CEH video now uses `autoplay`, `muted`, `loop`, and `playsinline`. Browsers generally require autoplaying videos to begin muted. Visitors can use the controls to enable sound.
