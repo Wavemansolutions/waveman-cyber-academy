@@ -2,7 +2,7 @@
 // 1) REPLACE THESE WITH YOUR REAL SELAR COURSE LINKS
 // ============================================================
 const COURSE_LINKS = {
-  ceh: "https://selar.com/REPLACE-WITH-CEH-LINK",
+  ceh: "https://selar.com/17t1043p18",
   soc: "https://selar.com/REPLACE-WITH-SOC-LINK",
   noc: "https://selar.com/REPLACE-WITH-NOC-LINK",
   ai:  "https://selar.com/REPLACE-WITH-AI-LINK"

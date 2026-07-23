@@ -1,49 +1,22 @@
-# Cyber Skills Academy — Google Drive Video Version
+# Cyber Skills Academy Landing Page
 
-This version shows a visible play button on every course card and loads each intro video from Google Drive directly inside the landing page.
+Updated package:
+- CEH v13 course now links to Selar: https://selar.com/17t1043p18
+- CEH intro video is included locally at assets/videos/ceh-intro.MP4
+- SOC, NOC and AI thumbnails now display COMING SOON
+- AI SVG XML error has been fixed
 
-## Add Google Drive videos
+## Upload/update steps
 
-1. Upload each MP4 video to Google Drive.
-2. Right-click the video and choose **Share**.
-3. Under General access, choose **Anyone with the link** and **Viewer**.
-4. Copy the link.
-5. Open `script.js` and replace the five values inside `DRIVE_VIDEOS`.
-
-Example:
-
-```js
-const DRIVE_VIDEOS = {
-  overview: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
-  ceh: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
-  soc: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
-  noc: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing",
-  ai: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
-};
-```
-
-The script extracts the file ID and loads:
-
-```text
-https://drive.google.com/file/d/FILE_ID/preview
-```
-
-## Add Selar links
-
-In the same `script.js` file, replace the four placeholders inside `COURSE_LINKS`.
-
-## Upload changes to GitHub
+From your project folder run:
 
 ```bash
 git add .
-git commit -m "Add Google Drive course videos"
+git commit -m "Add CEH course link, intro video, and coming soon thumbnails"
 git push
 ```
 
-Vercel will redeploy automatically after the push.
-
 ## Notes
 
-- Do not upload the MP4 files to GitHub; Google Drive hosts them.
-- Google Drive must be set to **Anyone with the link → Viewer** or visitors will see an access request.
-- For high-traffic paid courses, a dedicated video platform is usually more reliable than Google Drive.
+- The CEH video file is large (~48 MB). GitHub supports files under 100 MB, so pushing from VS Code should work.
+- The other three courses are currently marked Coming Soon. Later, you can replace those sections with real links and videos.
